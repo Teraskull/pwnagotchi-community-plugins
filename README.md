@@ -16,8 +16,20 @@ This is a third-party unofficial plugin repository for [Pwnagotchi](https://gith
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#downloading">Downloading</a></li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#downloading">Downloading</a>
+      <ul>
+        <li><a href="#using-git-clone">Using Git Clone</a></li>
+        <li><a href="#using-pwnagotchi-plugin-manager">Using Pwnagotchi Plugin Manager</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#enabling">Enabling</a>
+      <ul>
+        <li><a href="#from-config-file">From Config File</a></li>
+        <li><a href="#from-pwnagotchi-plugin-manager">From Pwnagotchi Plugin Manager</a></li>
+      </ul>
+    </li>
     <li><a href="#configuration">Configuration</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -26,6 +38,8 @@ This is a third-party unofficial plugin repository for [Pwnagotchi](https://gith
 
 
 ## Downloading
+
+### Using Git Clone:
 
 In order to use these plugins, clone the repository anywhere on your unit:
 
@@ -44,7 +58,31 @@ main.custom_plugins = "/path/to/plugin/directory"
 > By default, `/usr/local/share/pwnagotchi/installed-plugins/` is used.
 
 
-## Usage
+### Using Pwnagotchi Plugin Manager:
+
+Another way to install plugins is to add the repo to `/etc/pwnagotchi/config.toml`:
+
+```toml
+main.custom_plugin_repos = [
+  "https://github.com/evilsocket/pwnagotchi-plugins-contrib/archive/master.zip",
+  "https://github.com/Teraskull/pwnagotchi-community-plugins/archive/master.zip"
+]
+```
+
+Then you can use the Pwnagotchi plugin manager to install the plugins:
+
+```shell
+sudo pwnagotchi plugins update
+
+sudo pwnagotchi plugins list
+
+sudo pwnagotchi plugins install plugin_name
+```
+
+
+## Enabling
+
+### From Config File:
 
 To enable a previously downloaded plugin, add the following line to `/etc/pwnagotchi/config.toml`:
 
@@ -53,6 +91,15 @@ main.plugins.plugin_name.enabled = true
 ```
 
 Where `plugin_name` is the filename of the plugin.
+
+
+### From Pwnagotchi Plugin Manager:
+
+If you are using the Pwnagotchi plugin manager, enable plugins with the following command:
+
+```shell
+sudo pwnagotchi plugins enable plugin_name
+```
 
 
 ## Configuration
